@@ -1,15 +1,19 @@
+// tslint:disable
 import React, { Component } from "react";
 import { render } from "react-dom";
 import Image from "./Image";
 import "./style.css";
 
+interface IImageListItem {
+  src: string;
+  altFormatSrc: string;
+  date: string;
+}
+
 // tslint:disable-next-line:no-empty-interface
 interface IImageListProps {}
 interface IImageListState {
-  items: Array<{
-    src: string;
-    date: string;
-  }>;
+  items: IImageListItem[];
 }
 
 export default class ImageList extends Component<
@@ -25,7 +29,7 @@ export default class ImageList extends Component<
 
   public render() {
     const imageList = this.state.items.map((item) => (
-      <Image src={item.src} date={item.date} />
+      <Image src={item.src} altFormatSrc={item.altFormatSrc} date={item.date} />
     ));
 
     return <div className="w-100 d-flex flex-column">{imageList}</div>;
@@ -37,10 +41,7 @@ export default class ImageList extends Component<
     return date;
   }
 
-  private getItems(): Array<{
-    src: string;
-    date: string;
-  }> {
+  private getItems(): IImageListItem[] {
     const startDate = new Date(2020, 10, 29);
     const endDate = new Date(Date.now());
 
@@ -56,16 +57,25 @@ export default class ImageList extends Component<
       } else if (currentDate.getDay() === 6) {
         srcs.push({
           date: currentDate.toLocaleDateString("de-DE"),
-          src: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${
+          src: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}
+          ${
             currentDate.getMonth() + 1
           }/${currentDate.getDate()}/original__1320x1000`,
+          // tslint:disable-next-line:object-literal-sort-keys
+          altFormatSrc: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${
+            currentDate.getMonth() + 1
+          }/0${currentDate.getDate()}/original__1320x1000`
         });
       } else {
         srcs.push({
           date: currentDate.toLocaleDateString("de-DE"),
-          src: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${
+          src: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${
             currentDate.getMonth() + 1
           }/${currentDate.getDate()}/original__1104x400`,
+          // tslint:disable-next-line:object-literal-sort-keys
+          altFormatSrc: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${
+            currentDate.getMonth() + 1
+          }/0${currentDate.getDate()}/original__1104x400`,
         });
       }
     }
