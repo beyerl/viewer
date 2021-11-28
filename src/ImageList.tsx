@@ -57,25 +57,16 @@ export default class ImageList extends Component<
       } else if (currentDate.getDay() === 6) {
         srcs.push({
           date: currentDate.toLocaleDateString("de-DE"),
-          src: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}
-          ${
-            currentDate.getMonth() + 1
-          }/${currentDate.getDate()}/original__1320x1000`,
+          src: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${currentDate.getMonth() + 1}/${currentDate.getDate()}/original__1320x1000`,
           // tslint:disable-next-line:object-literal-sort-keys
-          altFormatSrc: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${
-            currentDate.getMonth() + 1
-          }/0${currentDate.getDate()}/original__1320x1000`
+          altFormatSrc: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${currentDate.getMonth() + 1}/0${currentDate.getDate()}/original__1320x1000`
         });
       } else {
         srcs.push({
           date: currentDate.toLocaleDateString("de-DE"),
-          src: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${
-            currentDate.getMonth() + 1
-          }/${currentDate.getDate()}/original__1104x400`,
+          src: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${currentDate.getMonth() + 1}/${currentDate.getDate()}/original__1104x400`,
           // tslint:disable-next-line:object-literal-sort-keys
-          altFormatSrc: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${
-            currentDate.getMonth() + 1
-          }/0${currentDate.getDate()}/original__1104x400`,
+          altFormatSrc: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${currentDate.getMonth() + 1}/0${currentDate.getDate()}/original__1104x400`,
         });
       }
     }
