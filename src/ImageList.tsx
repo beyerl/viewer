@@ -41,8 +41,7 @@ export default class ImageList extends Component<
     src: string;
     date: string;
   }> {
-    // const startDate = new Date(2020, 10, 29);
-    const startDate = new Date(2021, 10, 1);
+    const startDate = new Date(2020, 10, 29);
     const endDate = new Date(Date.now());
 
     const srcs = [];
