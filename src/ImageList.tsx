@@ -80,8 +80,6 @@ export default class ImageList extends Component<
       }
     }
 
-    srcs.reverse();
-
     return srcs;
   }
 }
