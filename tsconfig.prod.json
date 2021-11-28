@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "baseUrl": "/viewer/",
+      "baseUrl": "/viewer",
       "outDir": "build/dist",
       "module": "commonjs",
       "target": "es5",
