@@ -139,7 +139,7 @@ export default class ImageList extends Component<
     }
 
     return {
-      srcFormat: `https://img.zeit.de/administratives/kaenguru-comics/kaenguru-${ImageList.formatIssueNumber(issueNumber)}/original__1320x1000`, // 1320x1000
+      srcFormat: `https://img.zeit.de/administratives/kaenguru-comics/kaenguru-${ImageList.formatIssueNumber(issueNumber)}/original__1320x1000`, // mobile
       altFormatSrcFormat: ""
     }
   }
