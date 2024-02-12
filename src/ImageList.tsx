@@ -16,7 +16,7 @@ interface IImageListItemUrlFormat {
 }
 
 // tslint:disable-next-line:no-empty-interface
-interface IImageListProps {}
+interface IImageListProps { }
 interface IImageListState {
   items: IImageListItem[];
 }
@@ -32,11 +32,11 @@ export default class ImageList extends Component<
     };
   }
 
-  private static getAbsoluteStartDate(): Date{
+  private static getAbsoluteStartDate(): Date {
     return new Date(2020, 10, 28)
   }
 
-  private static getNamedUrls(): string[]{
+  private static getNamedUrls(): string[] {
     return [
       "https://img.zeit.de/administratives/kaenguru-comics/pilot-kaenguru/original__1124x400",
       "https://img.zeit.de/administratives/kaenguru-comics/pow-kaenguru/original__1124x400",
@@ -71,7 +71,7 @@ export default class ImageList extends Component<
       ...this.getItemsByUrlFormat(dateFormatStartDate, absoluteEndDate, ImageList.getDateFormatWeekdayUrlFormat, ImageList.getDateFormatSaturdayUrlFormat)
     ]
   }
- 
+
   private getItemsByUrlFormat(startDate: Date, endDate: Date, getWeekdayUrlFormat: (...args: any) => IImageListItemUrlFormat, getSaturdayUrlFormat: (...args: any) => IImageListItemUrlFormat): IImageListItem[] {
     const items = [];
 
@@ -104,23 +104,24 @@ export default class ImageList extends Component<
 
   private static getDateFormatWeekdayUrlFormat(currentDate: Date): IImageListItemUrlFormat {
     return {
-      srcFormat: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${currentDate.getMonth() + 1}/${currentDate.getDate()}/original__1104x400`, // 1104x400
-      altFormatSrcFormat: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${currentDate.getMonth() + 1}/0${currentDate.getDate()}/original__1104x400` // 1104x400
+      srcFormat: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 < 10 ? "0" : ""}${currentDate.getMonth() + 1}/${currentDate.getDate()}/original__1104x400`, // 1104x400
+      altFormatSrcFormat: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 < 10 ? "0" : ""}${currentDate.getMonth() + 1}/0${currentDate.getDate()}/original__1104x400` // 1104x400
     }
   }
 
   private static getDateFormatSaturdayUrlFormat(currentDate: Date): IImageListItemUrlFormat {
     return {
-      srcFormat: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${currentDate.getMonth() + 1}/${currentDate.getDate()}/original__mobile`, // 1320x1000
+      srcFormat: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 < 10 ? "0" : ""}${currentDate.getMonth() + 1}/${currentDate.getDate()}/original__1320x1000 `, // mobile
       // tslint:disable-next-line:object-literal-sort-keys
-      altFormatSrcFormat: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 <10 ? "0": ""}${currentDate.getMonth() + 1}/0${currentDate.getDate()}/original__mobile`    }// 1320x1000 
+      altFormatSrcFormat: `https://img.zeit.de/administratives/kaenguru-comics/${currentDate.getFullYear()}-${currentDate.getMonth() + 1 < 10 ? "0" : ""}${currentDate.getMonth() + 1}/0${currentDate.getDate()}/original__1320x1000 `
+    }// mobile
   }
 
   private static getNumberFormatWeekdayUrlFormat(currentDate: Date): IImageListItemUrlFormat {
     const absoluteStartDate = ImageList.getAbsoluteStartDate();
-    let issueNumber = Math.floor((currentDate.getTime() - absoluteStartDate.getTime()) / (1000*60*60*24))
+    let issueNumber = Math.floor((currentDate.getTime() - absoluteStartDate.getTime()) / (1000 * 60 * 60 * 24))
 
-    if(currentDate.getTime() > new Date(2020, 10, 11, 0, 0,0).getTime()){
+    if (currentDate.getTime() > new Date(2020, 10, 11, 0, 0, 0).getTime()) {
       issueNumber -= 1
     }
 
@@ -132,9 +133,9 @@ export default class ImageList extends Component<
 
   private static getNumberFormatSaturdayUrlFormat(currentDate: Date): IImageListItemUrlFormat {
     const absoluteStartDate = ImageList.getAbsoluteStartDate();
-    let issueNumber = Math.floor((currentDate.getTime() - absoluteStartDate.getTime()) / (1000*60*60*24))
+    let issueNumber = Math.floor((currentDate.getTime() - absoluteStartDate.getTime()) / (1000 * 60 * 60 * 24))
 
-    if(currentDate.getTime() > new Date(2020, 10, 11, 0, 0,0).getTime()){
+    if (currentDate.getTime() > new Date(2020, 10, 11, 0, 0, 0).getTime()) {
       issueNumber -= 1
     }
 
@@ -144,9 +145,9 @@ export default class ImageList extends Component<
     }
   }
 
-  private static formatIssueNumber(issueNumber: number): string{
+  private static formatIssueNumber(issueNumber: number): string {
     const issueString = issueNumber.toString()
-    switch (issueString.length){
+    switch (issueString.length) {
       case 1: {
         return `00${issueString}`
       }
@@ -164,7 +165,7 @@ export default class ImageList extends Component<
 
   private static getNamedFormatUrlFormat(currentDate: Date): IImageListItemUrlFormat {
     const absoluteStartDate = ImageList.getAbsoluteStartDate();
-    const issueNumber = Math.floor((currentDate.getTime() - absoluteStartDate.getTime()) / (1000*60*60*24))
+    const issueNumber = Math.floor((currentDate.getTime() - absoluteStartDate.getTime()) / (1000 * 60 * 60 * 24))
 
     return {
       srcFormat: ImageList.getNamedUrls()[issueNumber],
